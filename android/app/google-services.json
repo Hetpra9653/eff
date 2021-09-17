@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "122965696722",
+    "project_id": "e-fuel-filling",
+    "storage_bucket": "e-fuel-filling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122965696722:android:7f0daaa9bbf41e98d64d0b",
+        "android_client_info": {
+          "package_name": "com.example.fuel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122965696722-rltu48n19ukk6d65rmi75002va70ponp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMFXDGsHixDsErQUDNkCWXNiBjF3jJS4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122965696722-rltu48n19ukk6d65rmi75002va70ponp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

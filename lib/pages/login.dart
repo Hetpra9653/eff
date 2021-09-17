@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fuel_app/pages/signup.dart';
+import 'package:fuel_app/utils/ThemeHelper.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,6 +16,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  
+
   @override
   void initState() {
     super.initState();
@@ -43,11 +49,8 @@ class _LoginPageState extends State<LoginPage> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomRight,
                               colors: [
-                            Color(0xffC6FFDD),
-                            Color(0xffFBD786),
-                            Color(0xfff7797d),
-                            // Color(0xff),
-                            // Color(0xff),
+                            Color(0xfff2a65a),
+                            Color(0xff772f1a),
                           ])),
                     ),
                   ),
@@ -60,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                           fontSize: 65,
                           fontFamily: GoogleFonts.alexBrush().fontFamily,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blueAccent,
+                          color: Colors.white
                         ),
                       ),
                     ),
@@ -69,18 +72,78 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(top: 50.0),
                     child: Text(
                       "To your account",
-                      style: TextStyle(color: Colors.lightBlue, fontSize: 30.0),
+                      style: TextStyle(color: Colors.white, fontSize: 30.0),
                     ),
                   )
                 ],
               ),
               Padding(
-                  padding: EdgeInsets.only(
-                      top: 100.0, right: 25.0, left: 25.0, bottom: 10.0),
-                  child: textformdec),
-              Padding(
-                  padding: EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0),
-                  child: textformdec2),
+                padding: const EdgeInsets.only(top: 100.0, left: 20.0,right: 20.0),
+                child: Column(
+                  children: [
+                    Container(
+                      child: TextFormField(
+                        decoration: ThemeHelper().textInputDecoration(
+                            "Mobile Number", "Enter your mobile number"),
+                        keyboardType: TextInputType.phone,
+                      ),
+                      decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                    ),
+                    SizedBox(height: 40.0),
+                    Container(
+                      child: TextFormField(
+                        obscureText: true,
+                        decoration: ThemeHelper().textInputDecoration(
+                            "Password*", "Enter your password"),
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return "Please enter your password";
+                          }
+                          return null;
+                        },
+                      ),
+                      decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 26.0, top: 9.0),
+                    child: GestureDetector(
+                      onTap: () => Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => SignUp())),
+                      child: Text(
+                        "Forgot Password ?",
+                        style: TextStyle(fontSize: 13.0, color: Colors.blue),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: (){},
+                child: Container(
+                  width: 300.0,
+                  height: 40.0,
+                  child: Center(
+                      child: Text(
+                    "Login",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      border: Border.all(color: Colors.green)),
+                ),
+              ),
               Row(children: <Widget>[
                 Expanded(
                     child: Divider(
@@ -88,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                   thickness: 1.0,
                   indent: 25.0,
                 )),
-                Text(" Or Login with "),
+                Text(" Or "),
                 Expanded(
                     child: Divider(
                   height: 70.0,
@@ -101,30 +164,16 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
-                        FontAwesomeIcons.facebook,
-                        color: Colors.blue.shade500,
-                      )),
+                      icon: Image.network(
+                          "https://img.icons8.com/cotton/48/000000/facebook.png")),
                   IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        FontAwesomeIcons.google,
-                        color: Colors.redAccent,
-                      )),
+                      onPressed: () {
+                        
+                      },
+                      icon: Image.network(
+                          "https://img.icons8.com/color-glass/48/000000/google-logo.png")),
                 ],
               ),
-              SizedBox(
-                height : 10.0
-              ),
-              Container(
-                
-                width: 300.0,
-                height: 40.0,
-                child: Center(child: Text("Login",style: TextStyle(
-                  fontSize: 20.0
-                ),)),
-                decoration: dec,
-              )
             ],
           ),
         ));
@@ -160,64 +209,6 @@ class DrawClip extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
-
-//box decoration
-final textformdec = TextFormField(
-  decoration: InputDecoration(
-    focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.red),
-    ),
-    enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.red,
-      ),
-    ),
-    prefixIcon: Icon(
-      Icons.person,
-      color: Colors.red.shade200,
-    ),
-    filled: true,
-    fillColor: Colors.red.shade50,
-    labelText: "Username",
-    labelStyle: TextStyle(color: Colors.red),
-  ),
-);
-
-final textformdec2 = TextFormField(
-  obscureText: true,
-  decoration: InputDecoration(
-    focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.blue),
-    ),
-    enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.blue,
-      ),
-    ),
-    prefixIcon: Icon(
-      Icons.person,
-      color: Colors.blue.shade200,
-    ),
-    filled: true,
-    fillColor: Colors.blue.shade50,
-    labelText: "Password",
-    labelStyle: TextStyle(color: Colors.blue),
-  ),
-);
-
-final dec =  BoxDecoration(
-                  color:  Colors.grey[300],
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.shade50,
-                        offset: Offset(4.0, 4.0),
-                        blurRadius: 3.0,
-                        spreadRadius: 1.0),
-                    BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4.0, -4.0),
-                        blurRadius: 3.0,
-                        spreadRadius: 1.0),
-                  ]);
-            
+ 
+// google authenticate
+ 
